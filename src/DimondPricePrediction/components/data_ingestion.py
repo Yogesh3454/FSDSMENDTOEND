@@ -10,9 +10,9 @@ from dataclasses import dataclass
 from pathlib import Path
 
 class DataIngestionConfig:
-    raw_data_path:str=os.path.join("artifacts","raw_csv")
-    train_data_path:str=os.path.join("artifacts","train_csv")
-    test_data_path=os.path.join("artifacts","test_csv")
+    raw_data_path:str=os.path.join("artifacts","raw.csv")
+    train_data_path:str=os.path.join("artifacts","train.csv")
+    test_data_path=os.path.join("artifacts","test.csv")
 
 class DataIngestion:
     def __init__(self):
@@ -33,7 +33,7 @@ class DataIngestion:
 
             train_data, test_data=train_test_split(data, test_size=0.25)
             logging.info("train test split completed")
-            
+
             train_data.to_csv(self.ingestion_config.train_data_path,index=False)
             test_data.to_csv(self.ingestion_config.test_data_path,index=False)
 
